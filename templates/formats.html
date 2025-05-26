@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Format - YouTube Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Available Formats for "{{ title }}"</h1>
+        <p style="color: red;">Warning: Download only videos you have permission to use.</p>
+        <h3>Select a format to download:</h3>
+        <form method="POST" action="/download">
+            <input type="hidden" name="url" value="{{ url }}">
+            <ul>
+                {% for stream, itag in streams %}
+                    <li>
+                        <button type="submit" name="itag" value="{{ itag }}">{{ stream }}</button>
+                    </li>
+                {% endfor %}
+            </ul>
+        </form>
+        <a href="{{ base_url }}">Back to Home</a>
+    </div>
+</body>
+</html>
