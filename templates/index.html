@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Video Downloader</h1>
+        <p style="color: red;">Warning: Download only videos you have permission to use. Unauthorized downloading may violate YouTube's Terms of Service.</p>
+        <form method="POST" action="/">
+            <input type="text" name="url" placeholder="Enter YouTube Video URL" required>
+            <button type="submit">Show Formats</button>
+        </form>
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+        <p>Share this app: <a href="{{ base_url }}">{{ base_url }}</a></p>
+    </div>
+</body>
+</html>
